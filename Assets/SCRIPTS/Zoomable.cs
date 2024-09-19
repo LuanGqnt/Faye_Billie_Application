@@ -10,22 +10,43 @@ public class Zoomable : MonoBehaviour {
 
     private Vector2 cursorHotspot;
 
+    private StateManager stateManager;
+
+    void Start() {
+        stateManager = FindObjectOfType<StateManager>();
+    }
+
     void OnMouseEnter() {
+        if(stateManager.currentState != States.ZOOM) {
+            Debug.Log("State is not ZOOM");
+            return;
+        }
+
         cursorHotspot = new Vector2(magnifierCursor.width / 2, magnifierCursor.height / 2);
         Cursor.SetCursor(magnifierCursor, cursorHotspot, CursorMode.Auto);
     }
     
     void OnMouseExit() {
+        if(stateManager.currentState != States.ZOOM) {
+            Debug.Log("State is not ZOOM");
+            return;
+        }
+
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     void OnMouseDown() {
+        if(stateManager.currentState != States.ZOOM) {
+            Debug.Log("State is not ZOOM");
+            return;
+        }
+        
         if(sceneName == "") {
             Debug.LogWarning("Zoomable does not have a scene!");
             return;
         }
 
-        Debug.Log("Changing scene to " + sceneName);
+        Debug.Log("Zooming into scene " + sceneName);
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         SceneManager.LoadScene(sceneName);
     }
