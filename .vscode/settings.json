@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Photosynthesis Simulator.sln"
+    "dotnet.defaultSolution": "Faye_Billie_Application.sln"
 }

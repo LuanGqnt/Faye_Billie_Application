@@ -8,8 +8,9 @@ public class Spawner : MonoBehaviour {
     public GameObject objectToSpawn;
     public float minRate;
     public float maxRate;
-    // public Vector3 minPosition;
-    // public Vector3 maxPosition;
+    
+    public Vector3 minPosition;
+    public Vector3 maxPosition;
 
     private float rate;
 
@@ -28,7 +29,9 @@ public class Spawner : MonoBehaviour {
 
     void Spawn(int amount) {
         for(int i = 0; i < amount; i++) {
-            Instantiate(objectToSpawn, new Vector3(0f, 0f, 0f), Quaternion.identity);
+            Vector3 positionToSpawn = new Vector3(Random.Range(minPosition.x, maxPosition.x), Random.Range(minPosition.y, maxPosition.y), Random.Range(minPosition.z, maxPosition.z));
+
+            Instantiate(objectToSpawn, positionToSpawn, Quaternion.identity);
         }
     }
 

@@ -9,8 +9,8 @@ public class Inspectable : MonoBehaviour {
     public string description;
     public Texture image;
 
-    public StateManager stateManager;
-    public InspectPanel inspectPanel;
+    private StateManager stateManager;
+    private InspectPanel inspectPanel;
 
     void Start() {
         stateManager = FindObjectOfType<StateManager>();

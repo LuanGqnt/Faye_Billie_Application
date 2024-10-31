@@ -9,8 +9,11 @@ public class Zoomables : MonoBehaviour {
 
     private StateManager stateManager;
 
+    private InspectPanel inspectPanel;
+
     void Start() {
         stateManager = FindObjectOfType<StateManager>();
+        inspectPanel = FindObjectOfType<InspectPanel>();
     }
 
     void Update() {
@@ -20,6 +23,8 @@ public class Zoomables : MonoBehaviour {
 
     void ZoomOut() {
         Debug.Log("Zooming out to scene " + zoomOutScene);
+
+        inspectPanel.Hide();
         SceneManager.LoadScene(zoomOutScene);
     }
 
